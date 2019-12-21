@@ -5,7 +5,10 @@ import java.io.*;
 import java.net.*;
 import javax.swing.*;
 import java.awt.*;
-import kalaha.*;
+
+import kalaha.Commands;
+import kalaha.Errors;
+import kalaha.KalahaMain;
 
 /**
  * Random move client for the Kalaha game server.
@@ -21,7 +24,6 @@ public class RandomClient implements Runnable
     private BufferedReader in;
     private Thread thr;
     private Socket socket;
-    private boolean running;
     private boolean connected;
     	
     /**
@@ -101,7 +103,7 @@ public class RandomClient implements Runnable
     public void run()
     {
         String reply;
-        running = true;
+        boolean running = true;
         
         try
         {
@@ -112,7 +114,7 @@ public class RandomClient implements Runnable
                     out.println(Commands.HELLO);
                     reply = in.readLine();
 
-                    String tokens[] = reply.split(" ");
+                    String[] tokens = reply.split(" ");
                     player = Integer.parseInt(tokens[1]);
                     
                     addText("I am player " + player);

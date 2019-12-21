@@ -1,9 +1,6 @@
 package kalaha;
 
-import server.*;
-import client.*;
-import ai.*;
-
+import server.KalahaServer;
 /**
  * Start point for the Kalaha application.
  * 
@@ -11,7 +8,6 @@ import ai.*;
  */
 public class KalahaMain
 {
-
     /**
      * Version number.
      */
@@ -29,7 +25,7 @@ public class KalahaMain
      */
     public static void main(String[] args) 
     {
-        KalahaMain main = new KalahaMain();
+        new KalahaMain();
     }
     
     /**

@@ -190,12 +190,8 @@ public class GameState
             //Take a step
             cMoveI++;
             if (cMoveI >= 14) cMoveI = 0;
-            
-            if ( (nextPlayer == 1 && cMoveI == HOUSE_N) || (nextPlayer == 2 && cMoveI == HOUSE_S) )
-            {
-                //Don't sow in opponents house
-            }
-            else
+
+            if (!((nextPlayer == 1 && cMoveI == HOUSE_N) || (nextPlayer == 2 && cMoveI == HOUSE_S)))
             {
                 //Sow a seed
                 board[cMoveI]++;
@@ -211,16 +207,12 @@ public class GameState
                 
                 //Check capture
                 boolean capture = false;
-                if (board[cMoveI] == 1)
-                {
-                    if (nextPlayer == 1)
+                if (board[cMoveI] == 1 && nextPlayer == 1 && cMoveI >= START_S && cMoveI <= END_S)
                     {
-                        if (cMoveI >= START_S && cMoveI <= END_S) capture = true;
+                        capture = true;
                     }
-                    if (nextPlayer == 2)
-                    {
-                        if (cMoveI >= START_N && cMoveI <= END_N) capture = true;
-                    }
+                if (board[cMoveI] == 1 && nextPlayer == 2 && cMoveI >= START_N && cMoveI <= END_N) {
+                    capture = true;
                 }
                 
                 //Possible capture of opponent's seeds
@@ -448,13 +440,12 @@ public class GameState
         ambo--;
         if (nextPlayer == 1)
         {
-            if (board[START_S + ambo] > 0) return true;
+            return board[START_S + ambo] > 0;
         }
         else
         {
-            if (board[START_N + ambo] > 0) return true;
+            return board[START_N + ambo] > 0;
         }
-        return false;
     }
     
     /**

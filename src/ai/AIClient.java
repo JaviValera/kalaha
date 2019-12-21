@@ -5,7 +5,11 @@ import java.io.*;
 import java.net.*;
 import javax.swing.*;
 import java.awt.*;
-import kalaha.*;
+
+import kalaha.Commands;
+import kalaha.Errors;
+import kalaha.GameState;
+import kalaha.KalahaMain;
 
 /**
  * This is the main class for your Kalaha AI bot. Currently
@@ -118,7 +122,7 @@ public class AIClient implements Runnable
                     out.println(Commands.HELLO);
                     reply = in.readLine();
 
-                    String tokens[] = reply.split(" ");
+                    String[] tokens = reply.split(" ");
                     player = Integer.parseInt(tokens[1]);
                     
                     addText("I am player " + player);
@@ -237,7 +241,7 @@ public class AIClient implements Runnable
     private int iterativeDeepening(GameState currentBoard, long startTime)
     {
 
-        int levels [] = new int [] {Global.startCurrentLevel, Global.startMaxLevel};
+        int[] levels = new int[]{Global.startCurrentLevel, Global.startMaxLevel};
         int move = 1;
         while(System.currentTimeMillis() - startTime < Global.maxTime * 1000)
         {

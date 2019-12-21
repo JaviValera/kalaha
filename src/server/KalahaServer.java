@@ -2,7 +2,11 @@ package server;
 
 import java.io.*;
 import java.net.*;
-import kalaha.*;
+
+import kalaha.Commands;
+import kalaha.Errors;
+import kalaha.GameState;
+import kalaha.KalahaMain;
 
 /**
  * Creates and starts a Kalaha game server.
@@ -101,11 +105,7 @@ public class KalahaServer implements Runnable
      */
     public boolean gameIsFull()
     {
-        if (clients[0] != null && clients[1] != null)
-        {
-            return true;
-        }
-        return false;
+        return clients[0] != null && clients[1] != null;
     }
 
     /**
@@ -296,7 +296,7 @@ public class KalahaServer implements Runnable
          */
         public String makeMove(String cmd)
         {
-            String tokens[] = cmd.split(" ");
+            String[] tokens = cmd.split(" ");
             int ambo;
             int player;
 

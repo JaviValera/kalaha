@@ -53,7 +53,7 @@ public class HumanClient implements Runnable, ActionListener
             out.println(Commands.HELLO);
             String reply = in.readLine();
 
-            String parse[] = reply.split(" ");
+            String[] parse = reply.split(" ");
             player = Integer.parseInt(parse[1]);
 
             addText("I am player " + player);
@@ -301,7 +301,7 @@ public class HumanClient implements Runnable, ActionListener
                     out.println(Commands.HELLO);
                     reply = in.readLine();
 
-                    String tokens[] = reply.split(" ");
+                    String[] tokens = reply.split(" ");
                     player = Integer.parseInt(tokens[1]);
 
                     addText("I am player " + player);

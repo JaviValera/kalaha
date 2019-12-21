@@ -5,7 +5,10 @@ import java.io.*;
 import java.net.*;
 import javax.swing.*;
 import java.awt.*;
-import kalaha.*;
+
+import kalaha.Commands;
+import kalaha.Errors;
+import kalaha.KalahaMain;
 
 /**
  * Bad playing client for the Kalaha game server. The client always
@@ -20,10 +23,8 @@ public class BadClient implements Runnable
     
     private PrintWriter out;
     private BufferedReader in;
-    private Thread thr;
     private Socket socket;
-    private boolean running;
-    	
+
     /**
      * Creates a new bad playing client.
      */
@@ -53,7 +54,7 @@ public class BadClient implements Runnable
      */
     public void start()
     {
-        thr = new Thread(this);
+        Thread thr = new Thread(this);
         thr.start();
     }
     
@@ -96,7 +97,7 @@ public class BadClient implements Runnable
     public void run()
     {
         String reply;
-        running = true;
+        boolean running = true;
         
         try
         {
@@ -107,7 +108,7 @@ public class BadClient implements Runnable
                     out.println(Commands.HELLO);
                     reply = in.readLine();
 
-                    String tokens[] = reply.split(" ");
+                    String[] tokens = reply.split(" ");
                     player = Integer.parseInt(tokens[1]);
                     
                     addText("I am player " + player);

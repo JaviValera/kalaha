@@ -4,8 +4,12 @@ import ai.AIClient;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import kalaha.*;
-import client.*;
+
+import client.BadClient;
+import client.HumanClient;
+import client.RandomClient;
+import kalaha.GameState;
+import kalaha.KalahaMain;
 
 /**
  * GUI for the Kalaha server application.
@@ -15,7 +19,6 @@ import client.*;
 public class ServerGUI implements ActionListener
 {
     private JTextArea text;
-    
     private JLabel[] labels_N;
     private JLabel[] labels_S;
     private JLabel house_N;
